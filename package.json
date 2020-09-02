@@ -5,7 +5,9 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "lint-staged": "lint-staged",
+    "lint-staged:js": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty"
   },
   "dependencies": {
     "axios": "^0.19.2",
@@ -63,19 +65,19 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ],
+  ], 
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint-staged"
     }
   },
   "lint-staged": {
-    "**/*.less": "stylelint --syntax less",
-    "**/*.{js,jsx,tsx,ts,less,md,json}": [
-      "prettier --write",
-      "git add"
-    ],
-    "**/*.{js,jsx}": "npm run lint-staged:js",
-    "**/*.{js,ts,tsx}": "npm run lint-staged:js"
+  "**/*.less": "stylelint --syntax less",
+  "**/*.{js,jsx,tsx,ts,less,md,json}": [
+    "prettier --write",
+    "git add"
+  ],
+  "**/*.{js,jsx}": "npm run lint-staged:js",
+  "**/*.{js,ts,tsx}": "npm run lint-staged:js"
   }
 }
