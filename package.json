@@ -66,14 +66,20 @@
   ],
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "npm run lint-staged"
     }
   },
+  "scripts": {
+    "lint-staged": "lint-staged",
+    "lint-staged:js": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty",
+  },
   "lint-staged": {
-    "src/**/*.{jsx,txs,ts,js,json,css,vue}": [
+    "**/*.less": "stylelint --syntax less",
+    "**/*.{js,jsx,tsx,ts,less,md,json}": [
       "prettier --write",
-      "eslint --fix",
       "git add"
-    ]
+    ],
+    "**/*.{js,jsx}": "npm run lint-staged:js",
+    "**/*.{js,ts,tsx}": "npm run lint-staged:js"
   }
 }
