@@ -79,6 +79,7 @@ export default {
     }
   },
   created() {},
+  methods: {
     async getLogins() {
       try {
         this.$axios
